@@ -9,4 +9,5 @@ os.system('apt update')
 os.system('apt install libc6')
 os.system('apt install -y g++-11')
 
+
 logging.info('Infrastructure ready')
