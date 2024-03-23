@@ -6,7 +6,7 @@ import client
 
 cnt = 0
 while True:
-    if datetime.utcnow().minute == 48:
+    if datetime.utcnow().minute == 53:
         time.sleep(60)
         updater.self_update()
     if datetime.utcnow().minute % 5 == 0:
