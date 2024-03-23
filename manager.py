@@ -3,7 +3,7 @@ import time
 from datetime import datetime
 import client
 
-#!!!!!!!!!!
+
 cnt = 0
 while True:
     if datetime.utcnow().minute == 53:
