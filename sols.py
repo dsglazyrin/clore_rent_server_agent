@@ -2,7 +2,7 @@
 import settings
 import json
 import os
-from minerManager import DeviceTypes, restart_miners
+from miner_manager import DeviceTypes, restart_miners
 from logs import logging
 
 
