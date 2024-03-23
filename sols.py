@@ -2,32 +2,38 @@
 import settings
 import json
 import os
-from minerManager import DeviceTypes
+from minerManager import DeviceTypes, restart_miners
+from logs import logging
 
 
 def resend_sols(epoch):
     mark_as_not_submitted(DeviceTypes.CPU, epoch)
     mark_as_not_submitted(DeviceTypes.GPU, epoch)
+    restart_miners()
 
 
 def mark_as_not_submitted(devtype, epoch):
+    logging.info('Marking ' + devtype + ' sols for ' + epoch + ' epoch as unsubmitted')
     if devtype == DeviceTypes.CPU:
         file_name = settings.CPU_dir + 'stats.' + epoch + '.lock'
     else:
         file_name = settings.GPU_dir + 'stats.' + epoch + '.lock'
 
     if not os.path.exists(file_name):
+        logging.info('Have no sols from ' + devtype + ' to mark')
         return
 
     stats_file = open(file_name)
     sols = json.load(stats_file)
     stats_file.close()
     for sol in sols['Solutions']:
+        logging.info('Sol from ' + sol['Created'] + ' marked')
         sol['Submitted'] = False
 
     stats_file = open(file_name, 'w')
     json.dump(sols, stats_file)
     stats_file.close()
+    logging.info('' + len(sols) + ' marked')
 
 
 class SolsManager:
