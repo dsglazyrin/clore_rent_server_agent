@@ -26,4 +26,3 @@ def compose_url(method):
 
 
 
-print(ping())

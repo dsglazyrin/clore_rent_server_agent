@@ -6,9 +6,10 @@ import client
 
 cnt = 0
 while True:
-    if datetime.utcnow().minute == 3:
+    if datetime.utcnow().minute == 48:
         time.sleep(60)
         updater.self_update()
     if datetime.utcnow().minute % 5 == 0:
-        client.ping()
+        time.sleep(60)
+        #client.ping()
 
