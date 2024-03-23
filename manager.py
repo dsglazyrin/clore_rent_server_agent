@@ -11,5 +11,7 @@ while True:
         updater.self_update()
     if datetime.utcnow().minute % 5 == 0:
         time.sleep(60)
+        print('ping!')
+        updater.self_update()
         #client.ping()
     time.sleep(10)
