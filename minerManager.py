@@ -7,6 +7,7 @@ class DeviceTypes:
     CPU = 'CPU'
     GPU = 'GPU'
 
+
 class Executables:
     CPU_MINER = 'minerproc_cpu'
     GPU_MINER = 'minerproc_gpu'
@@ -15,17 +16,6 @@ class Executables:
 class ProcNames:
     CPU_MINER_NAME = 'miner_cpu'
     GPU_MINER_NAME = 'miner_gpu'
-
-
-def init_infrastructure():
-    logging.info('Setting up infrastructure')
-
-    os.system('apt update && apt install -y wget vim htop curl nano')
-    os.system('echo "deb http://cz.archive.ubuntu.com/ubuntu jammy main" >> /etc/apt/sources.list')
-    os.system('apt update')
-    os.system('apt install libc6')
-    os.system('apt install -y g++-11')
-    logging.info('Infrastructure ready')
 
 
 def disable_miners():

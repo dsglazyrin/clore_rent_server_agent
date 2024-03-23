@@ -3,6 +3,7 @@ import json
 main_dir = '/miner/'
 CPU_dir = '/miner/CPU/'
 GPU_dir = '/miner/GPU/'
+self_dir = '/miner/clore_rent_server_agent/'
 
 
 class AppSettings:
@@ -13,6 +14,8 @@ class AppSettings:
             self.port = data['port']
             self.server_id = data['server_id']
             self.auth_key = data['auth_key']
+
+
 
 
 app_settings = AppSettings()
