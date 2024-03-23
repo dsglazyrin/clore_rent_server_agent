@@ -12,4 +12,4 @@ while True:
     if datetime.utcnow().minute % 5 == 0:
         time.sleep(60)
         #client.ping()
-
+    time.sleep(10)
