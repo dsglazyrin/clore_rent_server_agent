@@ -34,7 +34,7 @@ def enable_miners():
         logging.error('Miners processes are running! First disable them')
         return
     logging.info('Copying miner.conf')
-    os.system('cp ./miner.cond /etc/supervisor/conf.d/miner.conf')
+    os.system('cp ./miner.conf /etc/supervisor/conf.d/miner.conf')
     logging.info('Reloading supervisor')
     os.system('supervisorctl reload')
     logging.info('Waiting for miners to start')
@@ -59,6 +59,7 @@ def kill_miner_process(devtype):
         return None
     logging.info('Killing ' + devtype + ' miner PID ' + pid)
     os.system('kill ' + pid)
+    time.sleep(5)
     return pid
 
 
