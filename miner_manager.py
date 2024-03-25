@@ -31,7 +31,7 @@ def disable_miners():
 def enable_miners():
     logging.info('Enabling miners')
     if get_miner_pid(DeviceTypes.GPU) is not None or get_miner_pid(DeviceTypes.CPU) is not None:
-        logging.error('Miners processes are runing! First disable them')
+        logging.error('Miners processes are running! First disable them')
         return
     logging.info('Copying miner.conf')
     os.system('cp ./miner.cond /etc/supervisor/conf.d/miner.conf')

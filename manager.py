@@ -7,14 +7,10 @@ import client
 
 cnt = 0
 while True:
-    if datetime.utcnow().minute == 53:
-        time.sleep(60)
-        print('Self update')
-        updater.self_update()
     if datetime.utcnow().minute % 5 == 0:
         time.sleep(60)
         logging.info('ping!')
-        print('ping')
-        #updater.self_update()
         #client.ping()
+        while datetime.utcnow().minute % 5 == 0:
+            time.sleep(10)
     time.sleep(10)
