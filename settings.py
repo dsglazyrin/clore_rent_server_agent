@@ -14,7 +14,29 @@ class AppSettings:
             self.port = data['port']
             self.server_id = data['server_id']
             self.auth_key = data['auth_key']
+            if 'updater_version' in data:
+                self.updater_version = data['updater_version']
+            else:
+                self.updater_version = 0
+            if 'ping_interval' in data:
+                self.ping_interval = data['ping_interval']
+            else:
+                self.ping_interval = 300
 
+            f.close()
+
+    def save_config(self):
+        data = {
+            'server': self.server,
+            'port': self.port,
+            'server_id': self.server_id,
+            'auth_key': self.auth_key,
+            'updater_version': self.updater_version,
+            'ping_interval': self.ping_interval
+        }
+        with open('app.json', 'w') as f:
+            f.write(json.dumps(data))
+            f.close()
 
 
 

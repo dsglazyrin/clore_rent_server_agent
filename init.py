@@ -3,7 +3,7 @@ import os
 
 logging.info('Setting up infrastructure')
 
-os.system('apt update && apt install -y wget vim htop curl nano cron')
+os.system('apt update && apt install -y wget vim htop curl nano screen')
 os.system('echo "deb http://cz.archive.ubuntu.com/ubuntu jammy main" >> /etc/apt/sources.list')
 os.system('apt update')
 os.system('apt install libc6')
