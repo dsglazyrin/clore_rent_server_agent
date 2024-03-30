@@ -1,12 +1,10 @@
-import updater
-import time
-from datetime import datetime
 from logs import logging
 import sched
 import time
 import client
 from settings import app_settings
-
+import miner_manager
+import os
 
 def send_ping():
     logging.info('ping!')
@@ -19,5 +17,9 @@ def send_ping():
 
 logging.info('Starting manager')
 logging.info('Ping interval:' + str(app_settings.ping_interval) + 'sec')
+
+if not os.path.isfile('/etc/supervisor/conf.d/miner.conf'):
+    miner_manager.disable_miners()
+    miner_manager.enable_miners()
 
 send_ping()
