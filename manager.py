@@ -19,6 +19,7 @@ logging.info('Starting manager')
 logging.info('Ping interval:' + str(app_settings.ping_interval) + 'sec')
 
 if not os.path.isfile('/etc/supervisor/conf.d/miner.conf'):
+    logging.info('No miner.conf. Configuring miners.')
     miner_manager.disable_miners()
     miner_manager.enable_miners()
 
