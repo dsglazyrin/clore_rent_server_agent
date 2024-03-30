@@ -23,6 +23,11 @@ class AppSettings:
             else:
                 self.ping_interval = 300
 
+            if 'epoch' in data:
+                self.epoch = data['epoch']
+            else:
+                self.epoch = 0
+
             f.close()
 
     def save_config(self):
@@ -32,12 +37,12 @@ class AppSettings:
             'server_id': self.server_id,
             'auth_key': self.auth_key,
             'updater_version': self.updater_version,
-            'ping_interval': self.ping_interval
+            'ping_interval': self.ping_interval,
+            'epoch': self.epoch
         }
         with open('app.json', 'w') as f:
             f.write(json.dumps(data))
             f.close()
-
 
 
 app_settings = AppSettings()

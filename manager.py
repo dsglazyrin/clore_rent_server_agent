@@ -20,4 +20,4 @@ def send_ping():
 logging.info('Starting manager')
 logging.info('Ping interval:' + str(app_settings.ping_interval) + 'sec')
 
-client.ping()
+send_ping()

@@ -102,4 +102,4 @@ def get_miner_pid(devtype, only_running=True):
     return None
 
 
-#restart_miners()
+

@@ -8,28 +8,15 @@ from logs import logging
 
 def resend_sols(epoch):
     if epoch == 'latest':
-        epoch = get_latest_epoch()
+        epoch = settings.app_settings.epoch
         if epoch == 0:
+            logging.info('No sols found')
             return
         epoch = str(epoch)
+        logging.info('Latest epoch with sols:' + epoch)
     mark_as_not_submitted(DeviceTypes.CPU, epoch)
     mark_as_not_submitted(DeviceTypes.GPU, epoch)
     restart_miners()
-
-
-def get_latest_epoch():
-    res = 0
-    for root, dirs, files in os.walk(settings.CPU_dir):
-        for f_name in files:
-            parts = f_name.split('.')
-            if len(parts) > 2 and int(parts[1]) > res:
-                res = int(parts[1])
-    for root, dirs, files in os.walk(settings.GPU_dir):
-        for f_name in files:
-            parts = f_name.split('.')
-            if len(parts) > 2 and int(parts[1]) > res:
-                res = int(parts[1])
-    return res
 
 
 def mark_as_not_submitted(devtype, epoch):

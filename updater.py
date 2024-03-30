@@ -1,6 +1,7 @@
 import os
 from logs import logging
 from settings import app_settings
+from client import flush_tasks
 
 
 def self_update(to_version):
@@ -9,6 +10,7 @@ def self_update(to_version):
     os.system('git pull https://github.com/dsglazyrin/clore_rent_server_agent.git')
     app_settings.updater_version = to_version
     app_settings.save_config()
+    flush_tasks()
     os.system('supervisorctl reload')
     exit()
 
